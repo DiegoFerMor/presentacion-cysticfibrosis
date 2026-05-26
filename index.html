@@ -512,9 +512,16 @@
                 </div>
                 
                 <!-- Institutional Seals -->
-                <div class="mt-32 flex flex-wrap justify-center items-center gap-20 md:gap-32 lg:gap-40 reveal">
-                    <img src="./logos/logo_separ.png" alt="SEPAR" class="h-32 md:h-40 lg:h-48 w-auto drop-shadow-md opacity-90 transition-transform hover:scale-105" onerror="this.src='https://placehold.co/400x180/transparent/3b0764?text=Aval+SEPAR'">
-                    <img src="./logos/logo_cfc.PNG" alt="CFC SNS" class="h-28 md:h-36 lg:h-44 w-auto drop-shadow-md opacity-90 transition-transform hover:scale-105" onerror="this.src='https://placehold.co/400x180/transparent/3b0764?text=Acreditación+CFC+SNS'">
+                <div class="mt-32 flex flex-col justify-center items-center gap-16 reveal">
+                    <!-- Primera fila: Sociedades Médicas -->
+                    <div class="flex flex-wrap justify-center items-center gap-20 md:gap-32 lg:gap-40">
+                        <img src="./logos/logo_separ.png" alt="SEPAR" class="h-32 md:h-40 lg:h-48 w-auto drop-shadow-md opacity-90 transition-transform hover:scale-105" onerror="this.src='https://placehold.co/400x180/transparent/3b0764?text=Aval+SEPAR'">
+                        <img src="./logos/logo_sefq.png" alt="SEFQ" class="h-32 md:h-40 lg:h-48 w-auto drop-shadow-md opacity-90 transition-transform hover:scale-105" onerror="this.src='https://placehold.co/400x180/transparent/3b0764?text=Aval+SEFQ'">
+                    </div>
+                    <!-- Segunda fila: Acreditación -->
+                    <div>
+                        <img src="./logos/logo_cfc.PNG" alt="CFC SNS" class="h-28 md:h-36 lg:h-44 w-auto drop-shadow-md opacity-90 transition-transform hover:scale-105" onerror="this.src='https://placehold.co/400x180/transparent/3b0764?text=Acreditación+CFC+SNS'">
+                    </div>
                 </div>
             </div>
         </section>
@@ -732,7 +739,7 @@
       import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
       createChat({
-        webhookUrl: 'https://n8n.asklepiosdat.com/webhook/76f9d38c-16bf-4b69-a83b-b8a00005189d/chat',
+        webhookUrl: 'https://n8n.asklepiosdat.com/webhook/f5ded106-74c9-48ee-ae0a-47e83dcf6a49/chat',
         initialMessages: [
             '¡Hola! Soy el Asesor Académico Institucional de Hygeia Learning Hub.',
             '¿En qué puedo ayudarte hoy sobre el nuevo programa State of the Art in Cystic Fibrosis?'
