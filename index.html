@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>State of the Art in Cystic Fibrosis | Hygeia Hub</title>
+    
+    <!-- Fonts: Manrope (Display) & Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons: Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#f4ebf2",    // Marfil/Lila muy suave (Textos sobre oscuro)
+                        "primary-dark": "#2a1635", // Púrpura casi negro (Textos sobre claro)
+                        secondary: "#a855f7",  // Púrpura vibrante
+                        accent: "#c084fc",     // Lila Acento (Destellos e iconos)
+                        "accent-alt": "#f59e0b", // Ámbar/Oro (Contraste institucional)
+                        surface: "#581c87",    // Morado/Púrpura (Fondo principal)
+                        "surface-low": "#4c1d95", // Púrpura oscurecido
+                        "surface-lowest": "#3b0764", // Púrpura muy oscuro (Casi negro)
+                        "surface-alt": "#fdf4ff", // Fucsia/Lila extra claro (Fondo alterno claro)
+                        "on-surface": "#e9d5ff", // Lila atenuado para texto secundario
+                        "on-surface-alt": "#3b0764", // Texto secundario sobre fondo claro
+                        outline: "#a855f7",    // Púrpura (Bordes)
+                    },
+                    fontFamily: {
+                        headline: ["Manrope", "sans-serif"],
+                        body: ["Inter", "sans-serif"],
+                    },
+                    letterSpacing: {
+                        ultra: "-0.02em",
+                        stately: "0.2em",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            -webkit-font-smoothing: antialiased; 
+            background-color: #581c87; /* Púrpura Main */
+            color: #e9d5ff; /* Lila atenuado */
+        }
+        h1, h2, h3, h4, h5 { font-family: 'Manrope', sans-serif; }
+        
+        /* Gradiente Púrpura para el Hero */
+        .hero-gradient { 
+            background: linear-gradient(135deg, #3b0764 0%, #581c87 100%); 
+        }
+        
+        /* Navbar con efecto cristal adaptado al tono Lila Extra Claro */
+        .glass-nav { 
+            background: rgba(253, 244, 255, 0.95); 
+            backdrop-filter: blur(16px); 
+        }
+        
+        /* Reveal animation */
+        .reveal { transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); opacity: 0; transform: translateY(20px); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        /* Custom Accordion transition */
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
+        .accordion-item.active .accordion-content { max-height: 800px; }
+        .accordion-item.active .accordion-icon { transform: rotate(180deg); }
+        
+        .text-balance { text-wrap: balance; }
+        
+        /* Color de selección de texto adaptado al tema */
+        ::selection { background-color: #f59e0b; color: #2a1635; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface relative">
+
+    <!-- Header / Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-nav border-b border-outline/20 shadow-sm transition-all">
+        <div class="max-w-7xl mx-auto px-6 h-28 lg:h-32 flex justify-between items-center transition-all">
+            <!-- Brand: Logo Exclusivo del Proyecto -->
+            <div class="flex items-center">
+                <img src="./logos/logo_cf.png" alt="State of the Art in Cystic Fibrosis" class="h-20 md:h-28 lg:h-32 w-auto drop-shadow-sm transition-all" onerror="this.onerror=null; this.src='https://placehold.co/500x150/581c87/f4ebf2?text=State+of+the+Art:+CF'">
+            </div>
+            
+            <!-- Links -->
+            <div class="hidden lg:flex items-center gap-10">
+                <a href="#proposito" class="text-sm font-semibold text-primary-dark hover:text-accent transition-colors uppercase tracking-widest text-[11px]">Justificación</a>
+                <a href="#objetivos" class="text-sm font-semibold text-primary-dark hover:text-accent transition-colors uppercase tracking-widest text-[11px]">Objetivos</a>
+                <a href="#programa" class="text-sm font-semibold text-primary-dark hover:text-accent transition-colors uppercase tracking-widest text-[11px]">Programa</a>
+                <a href="#avales" class="text-sm font-semibold text-primary-dark hover:text-accent transition-colors uppercase tracking-widest text-[11px]">Docentes</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- 0. Section: Hero (Cabecera) - FONDO PÚRPURA OSCURO -->
+        <header class="hero-gradient relative min-h-screen flex items-center pt-32 overflow-hidden">
+            <!-- Elementos decorativos de fondo -->
+            <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-20">
+                <div class="absolute -top-[20%] -right-[10%] w-[50vw] h-[50vw] rounded-full bg-accent blur-[120px]"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 relative z-10 w-full">
+                <div class="lg:col-span-8 space-y-10 reveal">
+                    <div class="inline-flex items-center gap-3 bg-surface-lowest/50 backdrop-blur-md px-4 py-2 rounded-full border border-accent/30 mb-4">
+                        <span class="w-1.5 h-1.5 rounded-full bg-accent-alt animate-pulse"></span>
+                        <span class="text-[10px] font-black uppercase tracking-widest text-primary">Edición 2026 - 2027</span>
+                    </div>
+                    
+                    <h1 class="flex flex-col gap-2 md:gap-4 text-primary">
+                        <span class="text-xl md:text-2xl lg:text-3xl font-medium text-primary/90 tracking-wide leading-snug max-w-4xl">
+                            State of the Art in Cystic Fibrosis: Self-Assessment Program
+                        </span>
+                        <span class="text-5xl md:text-7xl lg:text-8xl font-black text-primary leading-[1.05] tracking-ultra text-balance mt-2">
+                            Transformando el Paradigma <br>
+                            <span class="text-accent italic font-medium">Respiratorio</span>
+                        </span>
+                    </h1>
+                    
+                    <p class="text-lg md:text-2xl text-on-surface/90 max-w-2xl font-body leading-relaxed text-balance">
+                        Terapias moduladoras del CFTR, biomarcadores de precisión y humanización clínica. El programa definitivo para liderar la evolución terapéutica y la mejora de la calidad de vida.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+                        <div class="flex items-start gap-4 text-primary">
+                            <span class="material-symbols-outlined text-accent-alt">biotech</span>
+                            <span class="text-xs font-semibold leading-snug">Evidencia rigurosa basada en ATS y Guías SEPAR.</span>
+                        </div>
+                        <div class="flex items-start gap-4 text-primary">
+                            <span class="material-symbols-outlined text-accent-alt">verified</span>
+                            <span class="text-xs font-semibold leading-snug">Créditos de Formación Continuada (CFC) del SNS.</span>
+                        </div>
+                        <div class="flex items-start gap-4 text-primary">
+                            <span class="material-symbols-outlined text-accent-alt">psychology</span>
+                            <span class="text-xs font-semibold leading-snug">Pilar Humanista: Calidad de vida y transición familiar.</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Botones CTA con descarga de PDF -->
+                    <div class="flex flex-wrap gap-6 pt-6">
+                        <a href="./memoria_academica.pdf" target="_blank" class="bg-accent-alt text-primary-dark px-8 py-4 rounded-md font-bold text-sm uppercase tracking-widest hover:brightness-110 transition-all shadow-xl flex items-center gap-3">
+                            Descargar Memoria
+                            <span class="material-symbols-outlined text-sm">download</span>
+                        </a>
+                        <a href="#programa" class="bg-surface-lowest/50 backdrop-blur-md text-primary border border-accent/50 px-8 py-4 rounded-md font-bold text-sm uppercase tracking-widest hover:bg-surface-lowest transition-all">
+                            Ver Módulos Clínicos
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Asymmetrical Typographic Block -->
+                <div class="hidden lg:flex lg:col-span-4 justify-end items-center relative">
+                    <div class="text-right flex flex-col items-end">
+                        <span class="text-[9vw] font-black text-primary/5 leading-none select-none whitespace-nowrap">CFTR</span>
+                        <div class="mt-[-4rem] p-8 border-r-4 border-accent-alt bg-surface-lowest/40 backdrop-blur-md max-w-xs reveal" style="transition-delay: 0.3s;">
+                            <p class="text-primary font-headline italic text-xl leading-relaxed opacity-90">
+                                "Más allá de mejorar el FEV1, debemos aliviar la carga de tratamiento diaria y garantizar la transición a la etapa adulta con la mejor calidad de vida posible."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Stats Bar - FONDO ALTERNO CLARO -->
+        <section class="bg-surface-alt border-y border-accent-alt/30 py-12 shadow-inner">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div class="flex flex-col items-center text-center space-y-3 reveal">
+                        <span class="material-symbols-outlined text-surface-lowest text-4xl">assignment_turned_in</span>
+                        <div class="text-3xl font-extrabold text-primary-dark">Self-Assessment</div>
+                        <div class="text-[10px] uppercase font-black tracking-widest text-on-surface-alt">Evaluación Clínica Continua</div>
+                    </div>
+                    <div class="flex flex-col items-center text-center space-y-3 reveal" style="transition-delay: 0.1s;">
+                        <span class="material-symbols-outlined text-surface-lowest text-4xl">workspace_premium</span>
+                        <div class="text-3xl font-extrabold text-primary-dark">Créditos CFC</div>
+                        <div class="text-[10px] uppercase font-black tracking-widest text-on-surface-alt">Acreditación Sistema Nacional de Salud</div>
+                    </div>
+                    <div class="flex flex-col items-center text-center space-y-3 reveal" style="transition-delay: 0.2s;">
+                        <span class="material-symbols-outlined text-surface-lowest text-4xl">view_module</span>
+                        <div class="text-3xl font-extrabold text-primary-dark">3 Módulos</div>
+                        <div class="text-[10px] uppercase font-black tracking-widest text-on-surface-alt">Genética, Terapéutica y Humanismo</div>
+                    </div>
+                    <div class="flex flex-col items-center text-center space-y-3 reveal" style="transition-delay: 0.3s;">
+                        <span class="material-symbols-outlined text-surface-lowest text-4xl">calendar_month</span>
+                        <div class="text-3xl font-extrabold text-primary-dark">8 Meses</div>
+                        <div class="text-[10px] uppercase font-black tracking-widest text-on-surface-alt">Disponibilidad de la Plataforma</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1. Section: El Desafío - FONDO PÚRPURA NORMAL -->
+        <section id="proposito" class="min-h-screen flex flex-col justify-center py-32 bg-surface">
+            <div class="max-w-4xl mx-auto px-6 space-y-12 text-center reveal">
+                <div class="w-16 h-1.5 bg-accent-alt mx-auto mb-8"></div>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-primary leading-tight tracking-ultra">
+                    Un Cambio de Paradigma: <br> De la Paliación a la Modulación Funcional.
+                </h2>
+                <h3 class="text-xl md:text-2xl text-accent font-bold uppercase tracking-widest italic opacity-90">
+                    La Justificación Clínica de la Triple Terapia.
+                </h3>
+                <div class="text-lg md:text-xl text-primary leading-loose font-body font-light text-balance text-left md:text-center mt-12 bg-surface-lowest p-10 rounded-2xl border border-outline/20 shadow-lg italic">
+                    "La confirmación de la eficacia de las nuevas triples terapias moduladoras del CFTR y su simplificación posológica exigen un profundo conocimiento fenotípico y biomarcador para asegurar una respuesta terapéutica óptima en nuestros pacientes pediátricos y adultos."
+                </div>
+                <p class="text-lg text-accent-alt font-black uppercase tracking-[0.3em] pt-8">La vanguardia neumológica exige actualizar competencias hoy.</p>
+            </div>
+        </section>
+
+        <!-- 2. Section: Metodología Inmersiva (ATS) - FONDO ALTERNO CLARO -->
+        <section id="metodologia" class="min-h-screen flex flex-col justify-center py-32 bg-surface-alt border-y border-accent-alt/30">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+                <div class="space-y-12 reveal">
+                    <div>
+                        <span class="text-surface-lowest font-black text-[11px] uppercase tracking-[0.6em] mb-4 block">Eficacia Formativa</span>
+                        <h2 class="text-5xl font-black text-primary-dark tracking-ultra">Metodología UX y Certificación Oficial.</h2>
+                    </div>
+                    <p class="text-lg text-on-surface-alt font-medium leading-relaxed">Un entorno virtual de aprendizaje diseñado para garantizar la asimilación del diagnóstico genético y los nuevos algoritmos terapéuticos, bajo la estricta navegación secuencial requerida por la CFC.</p>
+                    
+                    <ul class="space-y-10">
+                        <li class="flex gap-6 group">
+                            <div class="bg-white p-4 h-fit rounded-lg group-hover:bg-surface-lowest group-hover:text-primary transition-all shadow-md border border-accent-alt/30 text-primary-dark">
+                                <span class="material-symbols-outlined">school</span>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-primary-dark mb-2">Evaluación Formativa Continua</h4>
+                                <p class="text-sm text-on-surface-alt leading-relaxed italic">Cuestionarios interactivos (Self-Assessments) al final de cada módulo con feedback razonado referenciado a la evidencia clínica respiratoria.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-6 group">
+                            <div class="bg-white p-4 h-fit rounded-lg group-hover:bg-surface-lowest group-hover:text-primary transition-all shadow-md border border-accent-alt/30 text-primary-dark">
+                                <span class="material-symbols-outlined">auto_stories</span>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-primary-dark mb-2">Contenidos de Clase Mundial</h4>
+                                <p class="text-sm text-on-surface-alt leading-relaxed italic">Malla curricular basada estrictamente en la literatura de la ATS (AJRCCM, AJRCMB) y directrices de la SEPAR/SEFQ.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-6 group">
+                            <div class="bg-white p-4 h-fit rounded-lg group-hover:bg-surface-lowest group-hover:text-primary transition-all shadow-md border border-accent-alt/30 text-primary-dark">
+                                <span class="material-symbols-outlined">bolt</span>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-primary-dark mb-2">Flexibilidad Asíncrona</h4>
+                                <p class="text-sm text-on-surface-alt leading-relaxed italic">Estudio adaptativo 100% online con soporte de simulación y rol-play en video para agendas médicas saturadas.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Logo ATS -->
+                <div class="flex flex-col items-center justify-center h-full mt-12 lg:mt-0 reveal" style="transition-delay: 0.2s;">
+                    <div class="flex flex-col items-center text-center w-full max-w-sm">
+                        <img src="./logos/logo_ats.png" alt="American Thoracic Society" class="h-32 md:h-40 w-auto object-contain mb-6 drop-shadow-md" onerror="this.src='https://placehold.co/300x120/transparent/3b0764?text=ATS+Guidelines'">
+                        <span class="text-[10px] font-black text-on-surface-alt uppercase tracking-[0.3em]">Respaldo Literario</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Section: Objetivos - FONDO PÚRPURA OSCURO -->
+        <section id="objetivos" class="min-h-screen flex flex-col justify-center py-32 bg-surface-lowest border-b border-outline/20">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="mb-20 text-center reveal">
+                    <span class="text-accent font-black text-[11px] uppercase tracking-[0.5em] mb-4 block">Competencias a Desarrollar</span>
+                    <h2 class="text-4xl md:text-5xl font-black text-primary tracking-ultra">Objetivos del Programa.</h2>
+                    <p class="text-lg text-on-surface mt-4 max-w-2xl mx-auto italic">Capacitar al especialista a través de tres dimensiones fundamentales para el nuevo paradigma en FQ.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Objetivo 1 -->
+                    <div class="bg-surface p-10 rounded-2xl border border-outline/20 shadow-lg reveal hover:-translate-y-2 transition-transform duration-300">
+                        <div class="w-14 h-14 bg-surface-lowest rounded-full flex items-center justify-center mb-8 border border-outline/30">
+                            <span class="material-symbols-outlined text-accent text-3xl">science</span>
+                        </div>
+                        <h4 class="text-2xl font-black text-primary mb-4">Dimensión Genética y Diagnóstica</h4>
+                        <p class="text-on-surface leading-relaxed text-sm font-medium">
+                            Comprender la genética de las mutaciones CFTR, evaluar el valor predictivo del test de cloruro en sudor (cCls) y utilizar los índices de aclaramiento pulmonar (LCI).
+                        </p>
+                    </div>
+                    
+                    <!-- Objetivo 2 -->
+                    <div class="bg-surface p-10 rounded-2xl border border-outline/20 shadow-lg reveal hover:-translate-y-2 transition-transform duration-300" style="transition-delay: 0.1s;">
+                        <div class="w-14 h-14 bg-surface-lowest rounded-full flex items-center justify-center mb-8 border border-outline/30">
+                            <span class="material-symbols-outlined text-accent text-3xl">medical_information</span>
+                        </div>
+                        <h4 class="text-2xl font-black text-primary mb-4">Dimensión Clínica y Terapéutica</h4>
+                        <p class="text-on-surface leading-relaxed text-sm font-medium">
+                            Analizar la eficacia comparada de los moduladores del CFTR, optimizando regímenes posológicos simplificados y asegurando el seguimiento de la seguridad hepática.
+                        </p>
+                    </div>
+                    
+                    <!-- Objetivo 3 -->
+                    <div class="bg-surface p-10 rounded-2xl border border-outline/20 shadow-lg reveal hover:-translate-y-2 transition-transform duration-300" style="transition-delay: 0.2s;">
+                        <div class="w-14 h-14 bg-surface-lowest rounded-full flex items-center justify-center mb-8 border border-outline/30">
+                            <span class="material-symbols-outlined text-accent text-3xl">diversity_1</span>
+                        </div>
+                        <h4 class="text-2xl font-black text-primary mb-4">Dimensión Humanista e Integral</h4>
+                        <p class="text-on-surface leading-relaxed text-sm font-medium">
+                            Integrar estrategias comunicativas para gestionar la fatiga del tratamiento crónico, optimizar la transición del paciente pediátrico a adulto y aliviar la carga familiar.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Section: Público Objetivo - FONDO ALTERNO CLARO -->
+        <section id="impacto" class="min-h-screen flex flex-col justify-center py-32 bg-surface-alt border-b border-accent-alt/30">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="mb-20 text-center reveal">
+                    <span class="text-surface-lowest font-black text-[11px] uppercase tracking-[0.4em] mb-4 block">Ecosistema Hospitalario</span>
+                    <h2 class="text-4xl md:text-5xl font-black mb-6 tracking-ultra text-primary-dark">Capacitación Multidisciplinar.</h2>
+                    <p class="text-on-surface-alt text-lg uppercase font-bold tracking-[0.2em] italic">Un abordaje transversal en las Unidades FQ.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Neumólogos -->
+                    <div class="p-8 border border-accent-alt/50 rounded-xl bg-white/90 space-y-6 reveal shadow-xl hover:-translate-y-1 transition-transform">
+                        <span class="text-[10px] font-black text-surface-lowest tracking-stately">PERFIL 01</span>
+                        <h4 class="text-2xl font-black text-primary-dark">Neumólogos Especialistas</h4>
+                        <p class="text-sm text-on-surface-alt leading-relaxed italic">Responsables del diagnóstico, la prescripción de nuevas terapias combinadas y la monitorización de la función pulmonar en unidades de adultos.</p>
+                    </div>
+                    <!-- Neumólogos Pediatras -->
+                    <div class="p-8 border border-accent-alt/50 rounded-xl bg-white/90 space-y-6 reveal shadow-xl hover:-translate-y-1 transition-transform" style="transition-delay: 0.1s;">
+                        <span class="text-[10px] font-black text-surface-lowest tracking-stately">PERFIL 02</span>
+                        <h4 class="text-2xl font-black text-primary-dark">Neumólogos Pediatras</h4>
+                        <p class="text-sm text-on-surface-alt leading-relaxed italic">Fundamentales en la identificación temprana, el inicio precoz de moduladores del CFTR y el acompañamiento durante la fase de transición.</p>
+                    </div>
+                    <!-- Farmacia -->
+                    <div class="p-8 border border-accent-alt/50 rounded-xl bg-white/90 space-y-6 reveal shadow-xl hover:-translate-y-1 transition-transform" style="transition-delay: 0.2s;">
+                        <span class="text-[10px] font-black text-surface-lowest tracking-stately">PERFIL 03</span>
+                        <h4 class="text-2xl font-black text-primary-dark">Farmacia Hospitalaria</h4>
+                        <p class="text-sm text-on-surface-alt leading-relaxed italic">Profesionales clave en la validación, dispensación posológica simplificada y gestión del alto impacto farmacoeconómico de estos huérfanos.</p>
+                    </div>
+                    <!-- MIR y Equipos -->
+                    <div class="p-8 border border-accent-alt/50 rounded-xl bg-white/90 space-y-6 reveal shadow-xl hover:-translate-y-1 transition-transform" style="transition-delay: 0.3s;">
+                        <span class="text-[10px] font-black text-surface-lowest tracking-stately">PERFIL 04</span>
+                        <h4 class="text-2xl font-black text-primary-dark">MIR y Eq. Multidisciplinar</h4>
+                        <p class="text-sm text-on-surface-alt leading-relaxed italic">Garantizando la asimilación del nuevo estándar de cuidado desde la etapa formativa y capacitando al entorno de fisioterapia y enfermería respiratoria.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Section: Itinerario Académico - FONDO PÚRPURA NORMAL -->
+        <section id="programa" class="min-h-screen flex flex-col justify-center py-32 bg-surface border-b border-outline/20">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="mb-20 text-center reveal">
+                    <span class="text-accent font-black text-[11px] uppercase tracking-[0.5em] mb-4 block font-headline">Contenidos y Estructura</span>
+                    <h2 class="text-4xl md:text-6xl font-black text-primary tracking-ultra">El Currículum Científico.</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+                    <!-- Sidebar Informativo -->
+                    <div class="lg:col-span-4 sticky top-32 reveal">
+                        <p class="text-lg font-bold text-primary mb-6 uppercase tracking-[0.2em] italic">3 Módulos de Excelencia.</p>
+                        <p class="text-on-surface leading-relaxed text-sm italic border-l-2 border-accent pl-6 mb-8">Estructurado bajo los máximos estándares UX para CFC, abarcando los apartados pedagógicos obligatorios por módulo.</p>
+                        
+                        <div class="bg-surface-lowest p-6 rounded-xl border border-outline/20 shadow-lg space-y-4">
+                            <div class="flex items-center gap-4">
+                                <span class="bg-surface border border-outline/30 p-2 rounded-lg text-accent material-symbols-outlined text-sm">menu_book</span>
+                                <span class="text-[10px] font-black uppercase tracking-widest text-primary">Scientific Core & Readings</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="bg-surface border border-outline/30 p-2 rounded-lg text-accent material-symbols-outlined text-sm">quiz</span>
+                                <span class="text-[10px] font-black uppercase tracking-widest text-primary">Self-Assessment Test</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="bg-surface border border-outline/30 p-2 rounded-lg text-accent material-symbols-outlined text-sm">smart_display</span>
+                                <span class="text-[10px] font-black uppercase tracking-widest text-primary">Casos y Multimedia interactivos</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Acordeones con Temario -->
+                    <div class="lg:col-span-8 space-y-4 reveal">
+                        
+                        <!-- Módulo 1 -->
+                        <div class="accordion-item bg-surface-lowest rounded-xl overflow-hidden border border-outline/30 transition-all shadow-lg">
+                            <button class="w-full px-8 py-8 flex justify-between items-center text-left focus:outline-none" onclick="toggleAccordion(this)">
+                                <div class="flex items-center gap-6">
+                                    <span class="text-[10px] font-black text-accent tracking-stately">M1</span>
+                                    <h4 class="text-xl font-bold text-primary">El Paisaje Molecular y Clínico de la Fibrosis Quística</h4>
+                                </div>
+                                <span class="material-symbols-outlined text-accent accordion-icon transition-transform">expand_more</span>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="px-8 pb-8 pt-0 ml-12">
+                                    <p class="text-on-surface leading-relaxed italic border-l-2 border-outline/50 pl-6 h-fit py-1 mb-6">
+                                        Identificando la mutación subyacente y estableciendo la línea base funcional del paciente mediante los biomarcadores respiratorios fundamentales.
+                                    </p>
+                                    <div class="bg-surface rounded-xl p-6 border border-outline/20">
+                                        <h5 class="text-[10px] font-black uppercase tracking-stately text-accent mb-4">Estructura del Módulo</h5>
+                                        <ul class="space-y-3">
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Executive Brief:</strong> El reto fenotípico y la importancia del diagnóstico precoz.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Scientific Core:</strong> Clases de mutaciones CFTR, test de cloruro en sudor (cCls) e índice LCI.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Critical Debate:</strong> Biomarcadores de función CFTR frente a las variables clásicas de FEV1.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Further Readings:</strong> Consensos de la ATS y la SEPAR sobre genética y monitorización clínica.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Practice Insights:</strong> Algoritmos de seguimiento del cloruro en sudor como estándar de respuesta terapéutica.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Clinical Cases:</strong> Evaluación inicial en paciente pediátrico candidato a tratamiento sistémico.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Self-Assessment:</strong> Interpretación de genotipos y valores límite diagnósticos de cCls.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Multimedia:</strong> Videocápsula didáctica sobre la disfunción de la pCFTR en el epitelio respiratorio.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Módulo 2 -->
+                        <div class="accordion-item bg-surface-lowest rounded-xl overflow-hidden border border-outline/30 transition-all shadow-lg">
+                            <button class="w-full px-8 py-8 flex justify-between items-center text-left focus:outline-none" onclick="toggleAccordion(this)">
+                                <div class="flex items-center gap-6">
+                                    <span class="text-[10px] font-black text-accent tracking-stately">M2</span>
+                                    <h4 class="text-xl font-bold text-primary">Evolución Terapéutica: La Revolución Moduladora del CFTR</h4>
+                                </div>
+                                <span class="material-symbols-outlined text-accent accordion-icon transition-transform">expand_more</span>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="px-8 pb-8 pt-0 ml-12">
+                                    <p class="text-on-surface leading-relaxed italic border-l-2 border-outline/50 pl-6 h-fit py-1 mb-6">
+                                        Maximizando la corrección y potenciación del canal a través de la revisión crítica de la eficacia y posología de las triples combinaciones actuales.
+                                    </p>
+                                    <div class="bg-surface rounded-xl p-6 border border-outline/20">
+                                        <h5 class="text-[10px] font-black uppercase tracking-stately text-accent mb-4">Estructura del Módulo</h5>
+                                        <ul class="space-y-3">
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Executive Brief:</strong> Ampliando horizontes: Del control sintomático a la modulación.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Scientific Core:</strong> Análisis comparativo y evidencia pivotales de las terapias combinadas (D-IVA/TEZ/VNZ vs predecesores).</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Critical Debate:</strong> Impacto clínico real a largo plazo de la superioridad en la reducción del cCls.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Further Readings:</strong> Publicaciones clave y meta-análisis (AJRCCM) sobre opciones terapéuticas.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Practice Insights:</strong> Protocolo de inicio, ajustes posológicos y monitorización de seguridad (ALT/AST).</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Clinical Cases:</strong> Toma de decisiones en la transición de un paciente previamente tratado con regímenes dobles.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Self-Assessment:</strong> Casos sobre criterios de elegibilidad basados en la presencia de mutaciones no clase I.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Multimedia:</strong> Animación 3D del mecanismo sinérgico de correctores y potenciadores en la membrana celular.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Módulo 3 -->
+                        <div class="accordion-item bg-surface-lowest rounded-xl overflow-hidden border border-outline/30 transition-all shadow-lg">
+                            <button class="w-full px-8 py-8 flex justify-between items-center text-left focus:outline-none" onclick="toggleAccordion(this)">
+                                <div class="flex items-center gap-6">
+                                    <span class="text-[10px] font-black text-accent tracking-stately">M3</span>
+                                    <h4 class="text-xl font-bold text-primary">El Paciente en el Centro: Transición, Adherencia y Familia</h4>
+                                </div>
+                                <span class="material-symbols-outlined text-accent accordion-icon transition-transform">expand_more</span>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="px-8 pb-8 pt-0 ml-12">
+                                    <p class="text-on-surface leading-relaxed italic border-l-2 border-outline/50 pl-6 h-fit py-1 mb-6">
+                                        Integrando la salud mental, el empoderamiento del paciente adulto joven y la mitigación de la fatiga del tratamiento en el entorno del hogar.
+                                    </p>
+                                    <div class="bg-surface rounded-xl p-6 border border-outline/20">
+                                        <h5 class="text-[10px] font-black uppercase tracking-stately text-accent mb-4">Estructura del Módulo</h5>
+                                        <ul class="space-y-3">
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Executive Brief:</strong> Aliviando la carga: La simplificación posológica como salvavidas.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Scientific Core:</strong> Adherencia a regímenes de toma única, transición a unidades de adultos y salud mental del crónico.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Critical Debate:</strong> El concepto de "Dolor Total" en FQ: Cuando el éxito del biomarcador oculta el desgaste de la familia.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Further Readings:</strong> Recomendaciones de medicina narrativa y bienestar del cuidador respiratorio.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Practice Insights:</strong> Herramientas estructuradas para la evaluación clínica del desgaste familiar y del equipo médico.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Clinical Cases:</strong> Role Play (Video): Acompañamiento en la rebelión terapéutica del adolescente durante su transición asistencial.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Self-Assessment:</strong> Reconocimiento temprano de señales de fatiga de tratamiento y falta de adherencia no reportada.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Multimedia:</strong> "Voces de la Cronicidad": Testimonios en audio sobre la transformación de la vida con terapias avanzadas.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Section: Cuadro Docente y Avales - FONDO ALTERNO CLARO -->
+        <section id="avales" class="min-h-screen flex flex-col justify-center py-32 bg-surface-alt border-t border-accent-alt/30">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="mb-24 text-center reveal">
+                    <span class="text-surface-lowest font-black text-[11px] uppercase tracking-[0.8em] mb-4 block">Legitimidad Científica</span>
+                    <h2 class="text-4xl md:text-6xl font-black text-primary-dark tracking-ultra">Dirección Académica Institucional.</h2>
+                    <p class="text-lg text-on-surface-alt font-bold uppercase tracking-[0.2em] mt-6 italic">KOLs Nacionales en Fibrosis Quística.</p>
+                </div>
+                
+                <!-- Directors -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+                    <div class="bg-white/90 p-10 rounded-2xl border border-accent-alt/50 shadow-xl reveal hover:border-surface-lowest transition-colors">
+                        <span class="text-[9px] font-black text-surface-lowest tracking-widest uppercase mb-4 block">Editora en Jefe y Módulo 2</span>
+                        <h4 class="text-2xl font-black text-primary-dark mb-3">Dra. Amparo Solé Jover</h4>
+                        <p class="text-xs font-semibold text-on-surface-alt opacity-90">Responsable de la Unidad de Fibrosis Quística y Trasplante Pulmonar del Hospital Universitario y Politécnico La Fe. Valencia.</p>
+                    </div>
+                    <div class="bg-white/90 p-10 rounded-2xl border border-accent-alt/50 shadow-xl reveal hover:border-surface-lowest transition-colors" style="transition-delay: 0.1s;">
+                        <span class="text-[9px] font-black text-surface-lowest tracking-widest uppercase mb-4 block">Editora Módulo 1 (Diagnóstico)</span>
+                        <h4 class="text-2xl font-black text-primary-dark mb-3">Dra. Silvia Gartner</h4>
+                        <p class="text-xs font-semibold text-on-surface-alt opacity-90">Especialista Referente de la Unidad de Fibrosis Quística. Hospital Universitari Vall d'Hebron. Barcelona.</p>
+                    </div>
+                    <div class="bg-white/90 p-10 rounded-2xl border border-accent-alt/50 shadow-xl reveal hover:border-surface-lowest transition-colors" style="transition-delay: 0.2s;">
+                        <span class="text-[9px] font-black text-surface-lowest tracking-widest uppercase mb-4 block">Editor Módulo 3 (Humanización)</span>
+                        <h4 class="text-2xl font-black text-primary-dark mb-3">Dr. Oscar Asensio</h4>
+                        <p class="text-xs font-semibold text-on-surface-alt opacity-90">Pediatra experto en Neumología Infantil y expresidente SEFQ. Corporació Sanitària Parc Taulí. Sabadell.</p>
+                    </div>
+                </div>
+                
+                <!-- Institutional Seals -->
+                <div class="mt-32 flex flex-wrap justify-center items-center gap-20 md:gap-32 lg:gap-40 reveal">
+                    <img src="./logos/logo_separ.png" alt="SEPAR" class="h-32 md:h-40 lg:h-48 w-auto drop-shadow-md opacity-90 transition-transform hover:scale-105" onerror="this.src='https://placehold.co/400x180/transparent/3b0764?text=Aval+SEPAR'">
+                    <img src="./logos/logo_cfc.PNG" alt="CFC SNS" class="h-28 md:h-36 lg:h-44 w-auto drop-shadow-md opacity-90 transition-transform hover:scale-105" onerror="this.src='https://placehold.co/400x180/transparent/3b0764?text=Acreditación+CFC+SNS'">
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Section: Cierre Institucional - FONDO PÚRPURA GRADIENTE -->
+        <section class="py-40 hero-gradient reveal relative overflow-hidden border-t border-accent-alt/50 min-h-screen flex items-center">
+            <!-- Círculo de fondo sutil para dar profundidad -->
+            <div class="absolute inset-0 bg-accent-alt/10 rounded-full filter blur-[120px] transform scale-150 -z-10 translate-x-1/3 translate-y-1/4"></div>
+
+            <div class="max-w-7xl mx-auto px-6 relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                
+                <!-- Bloque Izquierdo: Copy -->
+                <div class="flex flex-col items-start text-left">
+                    <h2 class="text-4xl md:text-6xl lg:text-7xl font-black text-primary leading-tight tracking-ultra italic mb-6">
+                        Hacia un Abordaje <br class="hidden lg:block"><span class="text-accent-alt">Verdaderamente Integral.</span>
+                    </h2>
+                    
+                    <h3 class="text-2xl md:text-3xl font-light text-on-surface leading-snug text-balance italic mb-6">
+                        Innovación respiratoria, preservando la dignidad humana.
+                    </h3>
+                    
+                    <p class="max-w-xl text-lg text-primary/80 leading-relaxed font-medium mb-12">
+                        Nuestra propuesta educativa acompaña al clínico en la revolución de las terapias moduladoras del CFTR. Dotamos al profesional no solo del rigor en el manejo de la nueva dosificación biomarcadora, sino de las herramientas para garantizar la calidad de vida. Apoye esta vanguardia clínica.
+                    </p>
+                    
+                    <div class="flex flex-col items-start gap-10">
+                        <div class="flex flex-wrap gap-x-6 gap-y-3 text-[10px] font-black uppercase tracking-stately text-on-surface mt-2">
+                            <div class="flex items-center gap-2 whitespace-nowrap">
+                                <span class="w-1.5 h-1.5 rounded-full bg-accent-alt shrink-0"></span>
+                                Acreditación Oficial SNS
+                            </div>
+                            <div class="flex items-center gap-2 whitespace-nowrap">
+                                <span class="w-1.5 h-1.5 rounded-full bg-accent-alt shrink-0"></span>
+                                Unrestricted Educational Grant
+                            </div>
+                            <div class="flex items-center gap-2 whitespace-nowrap">
+                                <span class="w-1.5 h-1.5 rounded-full bg-accent-alt shrink-0"></span>
+                                Modulación Avanzada CFTR
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloque Derecho: Alianza Visual -->
+                <div class="flex flex-col items-center justify-center h-full w-full mt-16 lg:mt-0 relative">
+                    <img src="./logos/logo_hygeia.png" alt="Hygeia Hub" class="w-full max-w-xs md:max-w-md lg:max-w-xl h-auto drop-shadow-2xl hover:scale-105 transition-transform duration-700" onerror="this.src='https://placehold.co/600x200/581c87/f4ebf2?text=Hygeia+Learning+Hub'">
+                </div>
+                
+            </div>
+        </section>    
+    </main>
+
+    <!-- Footer Compacto -->
+    <footer class="py-12 bg-surface-lowest text-primary border-t border-outline/20">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="space-y-2 text-center md:text-left">
+                <div class="flex items-center justify-center md:justify-start mb-2">
+                    <img src="./logos/logo_hygeia.png" alt="Hygeia" class="h-16 w-auto" onerror="this.onerror=null; this.src='https://placehold.co/300x100/3b0764/f4ebf2?text=Hygeia'">
+                </div>
+                <p class="text-[9px] font-black uppercase tracking-[0.4em] text-accent-alt leading-loose">
+                    © 2026 Madrid — Barcelona <br>
+                    Hygeia Learning Hub.
+                </p>
+            </div>
+            
+            <div class="flex flex-col items-center text-center">
+                <p class="text-[8px] font-bold uppercase tracking-[0.2em] text-on-surface">
+                    Contacto y Sponsorship: <br>
+                    <a href="mailto:dfernandez@hygeia.network" class="text-primary hover:text-accent-alt mt-1 block underline lowercase">dfernandez@hygeia.network</a>
+                </p>
+            </div>
+
+            <div class="flex gap-10 text-[10px] font-black uppercase tracking-stately text-on-surface/80">
+                <a href="#" onclick="openModal('modal-aviso'); return false;" class="hover:text-accent-alt transition-colors cursor-pointer">Aviso Legal</a>
+                <a href="#" onclick="openModal('modal-privacidad'); return false;" class="hover:text-accent-alt transition-colors cursor-pointer">Privacidad Institucional</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modales -->
+    <div id="modal-aviso" class="modal fixed inset-0 z-[100] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="absolute inset-0 bg-surface-lowest/90 backdrop-blur-sm cursor-pointer" onclick="closeModal('modal-aviso')"></div>
+        <div class="bg-surface relative z-10 w-full max-w-3xl max-h-[85vh] rounded-2xl shadow-2xl flex flex-col mx-4 overflow-hidden border border-outline/30">
+            <div class="flex justify-between items-center p-6 border-b border-outline/20 bg-surface-low">
+                <h2 class="text-xl font-bold text-primary font-headline">Aviso Legal</h2>
+                <button onclick="closeModal('modal-aviso')" class="text-outline hover:text-accent transition-colors">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="p-8 overflow-y-auto font-body text-sm text-on-surface space-y-6 bg-surface">
+                <div class="prose prose-sm max-w-none prose-headings:text-primary prose-p:text-on-surface prose-a:text-accent">
+                    <p class="font-bold text-primary">Información General</p>
+                    <p>En cumplimiento de lo dispuesto en la Ley 34/2002, de 11 de julio, de servicios de la sociedad de la información y de comercio electrónico (LSSI-CE), se informa de que el presente sitio web tiene carácter corporativo, institucional y estrictamente informativo.</p>
+                    
+                    <p class="font-bold text-primary mt-6">Titular del Sitio</p>
+                    <p>HYGEIA LEARNING HUB, SL<br>NIF/CIF: B26580704<br>Domicilio social: C\ Capitan Arenas 22 1-3 08034 Barcelona<br>Correo electrónico de contacto: info@hygeia.network</p>
+
+                    <p>El acceso, la navegación y el uso del sitio web atribuyen la condición de usuario e implican la aceptación plena del presente Aviso legal.</p>
+
+                    <p class="font-bold text-primary mt-6">Uso de los contenidos y Responsabilidad</p>
+                    <p>El usuario se compromete a realizar un uso adecuado y responsable. HLH no se hace responsable de los daños derivados del uso de la información contenida, ni de posibles errores o contenidos desactualizados relativos a la Fibrosis Quística.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-privacidad" class="modal fixed inset-0 z-[100] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="absolute inset-0 bg-surface-lowest/90 backdrop-blur-sm cursor-pointer" onclick="closeModal('modal-privacidad')"></div>
+        <div class="bg-surface relative z-10 w-full max-w-3xl max-h-[85vh] rounded-2xl shadow-2xl flex flex-col mx-4 overflow-hidden border border-outline/30">
+            <div class="flex justify-between items-center p-6 border-b border-outline/20 bg-surface-low">
+                <h2 class="text-xl font-bold text-primary font-headline">Política de Privacidad Institucional</h2>
+                <button onclick="closeModal('modal-privacidad')" class="text-outline hover:text-accent transition-colors">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="p-8 overflow-y-auto font-body text-sm text-on-surface space-y-6 bg-surface">
+                <div class="prose prose-sm max-w-none prose-headings:text-primary prose-p:text-on-surface prose-a:text-accent">
+                    <p class="font-bold text-primary">Información General</p>
+                    <p>HLH vela por la protección de la privacidad y por el tratamiento responsable de los datos personales, de conformidad con el Reglamento (UE) 2016/679 (RGPD) y normativa vigente.</p>
+
+                    <p class="font-bold text-primary mt-6">Tratamiento y Conservación</p>
+                    <p>Los datos recogidos (ej. vía email) son los estrictamente necesarios para atender consultas. No se utilizarán con fines comerciales y se conservarán el tiempo estrictamente necesario.</p>
+
+                    <p class="font-bold text-primary mt-6">Derechos del Usuario</p>
+                    <p>Puede ejercer sus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad mediante escrito a info@hygeia.network.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Manejo de Modales
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            if(modal) {
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = 'hidden'; 
+            }
+        }
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            if(modal) {
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Smooth Reveal Observer
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+        // Acordeones
+        function toggleAccordion(button) {
+            const item = button.parentElement;
+            const content = item.querySelector('.accordion-content');
+            const isActive = item.classList.contains('active');
+
+            document.querySelectorAll('.accordion-item').forEach(otherItem => {
+                otherItem.classList.remove('active');
+                otherItem.querySelector('.accordion-content').style.maxHeight = null;
+            });
+
+            if (!isActive) {
+                item.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        }
+
+        // Header Scroll
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('glass-nav');
+                nav.classList.remove('bg-transparent');
+            }
+        });
+    </script>
+
+    <!-- Asistente IA Institucional Integrado -->
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+    <style>
+      /* Personalización del Chat Widget a la identidad Púrpura/Lila/Ámbar */
+      :root {
+        /* Base de colores del Widget de n8n */
+        --chat--color--primary: #581c87; /* Púrpura oscuro para cabeceras y globos de usuario */
+        --chat--color--primary-shade-50: #4c1d95; 
+        --chat--color--primary--shade-100: #3b0764; 
+        --chat--color--secondary: #f59e0b; /* Ámbar/Oro para botones o acentos */
+        --chat--color-secondary-shade-50: #fde68a; 
+        
+        /* Modificando los contrastes de los mensajes */
+        --chat--color-white: #ffffff; 
+        --chat--color-light: #fdf4ff; /* Fondo claro zona escritura */
+        --chat--color-dark: #2a1635; /* Texto oscuro para el bot */
+        
+        /* Botón de apertura del chat */
+        --chat--toggle--background: #f59e0b; 
+        --chat--toggle--color: #2a1635; 
+      }
+      
+      .chat-window {
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4) !important;
+        font-family: 'Inter', sans-serif;
+      }
+    </style>
+
+    <script type="module">
+      import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+      createChat({
+        webhookUrl: 'https://n8n.asklepiosdat.com/webhook/76f9d38c-16bf-4b69-a83b-b8a00005189d/chat',
+        initialMessages: [
+            '¡Hola! Soy el Asesor Académico Institucional de Hygeia Learning Hub.',
+            '¿En qué puedo ayudarte hoy sobre el nuevo programa State of the Art in Cystic Fibrosis?'
+        ],
+        i18n: {
+            en: {
+                title: 'Hygeia Learning Hub', 
+                subtitle: 'Asesoría Académica Institucional',
+                getStarted: 'Nueva conversación', 
+                chatInput: { 
+                    placeholder: 'Escribe tu consulta sobre terapias FQ aquí...' 
+                }
+            }
+        }
+      });
+    </script>
+</body>
+</html>
