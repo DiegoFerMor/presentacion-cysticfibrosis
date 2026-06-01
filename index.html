@@ -21,26 +21,26 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: "#f4ebf2",    // Marfil/Lila muy suave (Textos sobre oscuro)
-                        "primary-dark": "#2a1635", // Púrpura casi negro (Textos sobre claro)
-                        secondary: "#a855f7",  // Púrpura vibrante
-                        accent: "#c084fc",     // Lila Acento (Destellos e iconos)
-                        "accent-alt": "#f59e0b", // Ámbar/Oro (Contraste institucional)
-                        surface: "#581c87",    // Morado/Púrpura (Fondo principal)
-                        "surface-low": "#4c1d95", // Púrpura oscurecido
-                        "surface-lowest": "#3b0764", // Púrpura muy oscuro (Casi negro)
-                        "surface-alt": "#fdf4ff", // Fucsia/Lila extra claro (Fondo alterno claro)
-                        "on-surface": "#e9d5ff", // Lila atenuado para texto secundario
-                        "on-surface-alt": "#3b0764", // Texto secundario sobre fondo claro
-                        outline: "#a855f7",    // Púrpura (Bordes)
+                        primary: "#f4ebf2",
+                        "primary-dark": "#2a1635",
+                        secondary: "#a855f7",
+                        accent: "#c084fc",
+                        "accent-alt": "#f59e0b",
+                        surface: "#581c87",
+                        "surface-low": "#4c1d95",
+                        "surface-lowest": "#3b0764",
+                        "surface-alt": "#fdf4ff",
+                        "on-surface": "#e9d5ff",
+                        "on-surface-alt": "#3b0764",
+                        outline: "#a855f7"
                     },
                     fontFamily: {
                         headline: ["Manrope", "sans-serif"],
-                        body: ["Inter", "sans-serif"],
+                        body: ["Inter", "sans-serif"]
                     },
                     letterSpacing: {
                         ultra: "-0.02em",
-                        stately: "0.2em",
+                        stately: "0.2em"
                     }
                 }
             }
@@ -488,7 +488,7 @@
             <div class="max-w-7xl mx-auto px-6">
                 <div class="mb-24 text-center reveal">
                     <span class="text-surface-lowest font-black text-[11px] uppercase tracking-[0.8em] mb-4 block">Legitimidad Científica</span>
-                    <h2 class="text-4xl md:text-6xl font-black text-primary-dark tracking-ultra">Dirección Académica Institucional.</h2>
+                    <h2 class="text-4xl md:text-6xl font-black text-primary-dark tracking-ultra">Dirección Académica Propuesta.</h2>
                     <p class="text-lg text-on-surface-alt font-bold uppercase tracking-[0.2em] mt-6 italic">KOLs Nacionales en Fibrosis Quística.</p>
                 </div>
                 
@@ -513,13 +513,17 @@
                 
                 <!-- Institutional Seals -->
                 <div class="mt-32 flex flex-col justify-center items-center gap-16 reveal">
-                    <!-- Primera fila: Sociedades Médicas -->
-                    <div class="flex flex-wrap justify-center items-center gap-20 md:gap-32 lg:gap-40">
-                        <img src="./logos/logo_separ.png" alt="SEPAR" class="h-32 md:h-40 lg:h-48 w-auto drop-shadow-md opacity-90 transition-transform hover:scale-105" onerror="this.src='https://placehold.co/400x180/transparent/3b0764?text=Aval+SEPAR'">
-                        <img src="./logos/logo_sefq.png" alt="SEFQ" class="h-32 md:h-40 lg:h-48 w-auto drop-shadow-md opacity-90 transition-transform hover:scale-105" onerror="this.src='https://placehold.co/400x180/transparent/3b0764?text=Aval+SEFQ'">
+                    <!-- Primera fila: Sociedades Médicas con Texto -->
+                    <div class="flex flex-col items-center gap-6">
+                        <span class="text-[11px] font-black uppercase tracking-[0.3em] text-surface-lowest/70">Se solicitará aval médico a:</span>
+                        <div class="flex flex-wrap justify-center items-center gap-20 md:gap-32 lg:gap-40">
+                            <img src="./logos/logo_separ.png" alt="SEPAR" class="h-32 md:h-40 lg:h-48 w-auto drop-shadow-md opacity-90 transition-transform hover:scale-105" onerror="this.src='https://placehold.co/400x180/transparent/3b0764?text=Aval+SEPAR'">
+                            <img src="./logos/logo_sefq.png" alt="SEFQ" class="h-32 md:h-40 lg:h-48 w-auto drop-shadow-md opacity-90 transition-transform hover:scale-105" onerror="this.src='https://placehold.co/400x180/transparent/3b0764?text=Aval+SEFQ'">
+                        </div>
                     </div>
                     <!-- Segunda fila: Acreditación -->
-                    <div>
+                    <div class="flex flex-col items-center gap-6">
+                        <span class="text-[11px] font-black uppercase tracking-[0.3em] text-surface-lowest/70">Pendiente solicitud créditos CFC:</span>
                         <img src="./logos/logo_cfc.PNG" alt="CFC SNS" class="h-28 md:h-36 lg:h-44 w-auto drop-shadow-md opacity-90 transition-transform hover:scale-105" onerror="this.src='https://placehold.co/400x180/transparent/3b0764?text=Acreditación+CFC+SNS'">
                     </div>
                 </div>
